@@ -1,0 +1,10 @@
+.DS_Store
+.dart_tool/
+
+.packages
+.pub/
+
+build/
+/example/*
+!/example/main.dart
+!/example/pubspec.yaml
