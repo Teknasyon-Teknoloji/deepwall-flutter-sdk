@@ -70,11 +70,13 @@ public class SwiftDeepwallFlutterPlugin: NSObject, FlutterPlugin, DeepWallNotifi
                 return result("Could not recognize flutter arguments in method: (setUserProperties)")
             }
             if let myArgs = args as? [String: Any]{
-                let userProperties = myArgs["userProperties"] as! [String: Any]
-                let uuid = userProperties["uuid"] as! String
-                let country = userProperties["country"] as! String
-                let language = userProperties["language"] as! String
-                let properties = DeepWallUserProperties(uuid: uuid, country: country, language: language)
+                let uuid = myArgs["uuid"] as! String
+                let country = myArgs["country"] as! String
+                let language = myArgs["language"] as! String
+                let environmentStyle = myArgs["environmentStyle"] as! Int
+                let debugAdvertiseAttributions = myArgs["debugAdvertiseAttributions"]
+                let theme: DeepWallEnvironmentStyle = (environmentStyle == 0) ? .light : .dark
+                let properties = DeepWallUserProperties(uuid: uuid, country: country, language: language, environmentStyle: theme, debugAdvertiseAttributions:debugAdvertiseAttributions as? [String])
                 DeepWall.shared.setUserProperties(properties)
             } else {
                 result(FlutterError(code: "-1", message: "iOS could not extract " +

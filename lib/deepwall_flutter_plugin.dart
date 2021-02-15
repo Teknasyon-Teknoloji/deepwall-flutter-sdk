@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:deepwall_flutter_plugin/enums/errorcodes.dart';
 import 'package:deepwall_flutter_plugin/enums/events.dart';
 import 'package:flutter/services.dart';
@@ -82,18 +84,23 @@ class DeepwallFlutterPlugin {
     });
   }
 
-  static void setUserProperties(Map<String, dynamic> userProperties) async {
-    if (!userProperties.containsKey("uuid")) {
+  static void setUserProperties(uuid, country, language, {environmentStyle:0,debugAdvertiseAttributions:null}) async {
+    if (uuid.isEmpty) {
       throw new DeepwallException(ErrorCode.USER_PROPERTIES_UUID_REQUIRED);
     }
-    if (!userProperties.containsKey("country")) {
+    if (country.isEmpty) {
       throw new DeepwallException(ErrorCode.USER_PROPERTIES_COUNTRY_REQUIRED);
     }
-    if (!userProperties.containsKey("language")) {
+    if (language.isEmpty) {
       throw new DeepwallException(ErrorCode.USER_PROPERTIES_LANGUAGE_REQUIRED);
     }
-    await _channel
-        .invokeMethod('setUserProperties', {"userProperties": userProperties});
+    await _channel.invokeMethod('setUserProperties', {
+      "uuid": uuid,
+      "country": country,
+      'language': language,
+      'environmentStyle': environmentStyle,
+      'debugAdvertiseAttributions': debugAdvertiseAttributions
+    });
   }
 
   static void requestPaywall(actionKey, extraData) async {

@@ -87,11 +87,13 @@ class DeepwallFlutterPlugin(): FlutterPlugin, MethodCallHandler, ActivityAware {
       DeepWall.initDeepWallWith(activity.application, this.activity, apiKey!!, deepWallEnvironment)
     }
     else if(call.method == "setUserProperties"){
-      val userProperties = call.argument<HashMap<String,Any>>("userProperties")
-      val uuid = userProperties?.get("uuid")
-      val country = userProperties?.get("country")
-      val language = userProperties?.get("language")
-      DeepWall.setUserProperties(uuid as String, country as String, language as String)
+      val uuid = call.argument<String>("uuid")
+      val country = call.argument<String>("country")
+      val language = call.argument<String>("language")
+      val environmentStyle = call.argument<Int>("environmentStyle")
+      val debugAdvertiseAttributions = call.argument<HashMap<String,Any>> ("debugAdvertiseAttributions")
+      val theme: DeepWallEnvironmentStyle = if (environmentStyle == 0) DeepWallEnvironmentStyle.LIGHT else DeepWallEnvironmentStyle.DARK
+      DeepWall.setUserProperties(uuid!!, country!!, language!!, theme!!)
     }
     else if (call.method == "requestPaywall"){
       val actionKey = call.argument<String>("actionKey")

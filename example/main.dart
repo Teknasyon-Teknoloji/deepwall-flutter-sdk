@@ -38,12 +38,8 @@ class _MyAppState extends State<MyApp> {
 
       DeepwallFlutterPlugin.initialize('API_KEY', Environment.SANDBOX.value);
 
-      Map<String, Object> userProperties = new HashMap();
-      userProperties['uuid'] = 'unique-device-id-here';
-      userProperties['language'] = 'en';
-      userProperties['country'] = "us";
-
-      DeepwallFlutterPlugin.setUserProperties(userProperties);
+      DeepwallFlutterPlugin.setUserProperties(
+          'unique-device-id-here', 'en', 'us');
 
       // Future.delayed(Duration(milliseconds: 5000), () {
       //   DeepwallFlutterPlugin.closePaywall();
