@@ -148,15 +148,15 @@ public class SwiftDeepwallFlutterPlugin: NSObject, FlutterPlugin, DeepWallNotifi
                 return result("Could not recognize flutter arguments in method: (validateReceipt)")
             }
             if let myArgs = args as? [String: Any]{
-                /*var validationType = myArgs["validationType"] as! Int
-                var validation:DeepWallReceiptValidationType;
+                var validationType = myArgs["validationType"] as? Int
+                var validation:PloutosValidationType;
                 switch (validationType) {
-                    case 1: validation = DeepWallReceiptValidationType.PURCHASE; break;
-                    case 2: validation = DeepWallReceiptValidationType.RESTORE; break;
-                    case 3: validation = DeepWallReceiptValidationType.AUTOMATIC; break
-                    default: validation = DeepWallReceiptValidationType.PURCHASE; break;
-                }*/
-                //DeepWall.shared.validateReceipt(type:validationType)
+                case 1: validation = PloutosValidationType.purchase; break;
+                    case 2: validation = PloutosValidationType.restore; break;
+                    case 3: validation = PloutosValidationType.automatic; break
+                    default: validation = PloutosValidationType.purchase; break;
+                }
+                DeepWall.shared.validateReceipt(for: validation)
             } else {
                 result(FlutterError(code: "-1", message: "iOS could not extract " +
                     "flutter arguments in method: (validateReceipt)", details: nil))

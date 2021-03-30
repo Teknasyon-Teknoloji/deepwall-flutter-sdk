@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Fixed
 - Added missing parameters for `setUserProperties` method
 
+## Changed
+- On iOS deepwall-core version upgraded to version 2.1
+
+## Added
+- On iOS added `validateReceipt` implementation
+
 ---
 
 ## 1.0.0 (2021-02-11)
