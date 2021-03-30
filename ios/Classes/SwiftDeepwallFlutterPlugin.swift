@@ -149,12 +149,16 @@ public class SwiftDeepwallFlutterPlugin: NSObject, FlutterPlugin, DeepWallNotifi
             }
             if let myArgs = args as? [String: Any]{
                 var validationType = myArgs["validationType"] as? Int
-                var validation:PloutosValidationType;
+                var validation: PloutosValidationType
                 switch (validationType) {
-                case 1: validation = PloutosValidationType.purchase; break;
-                    case 2: validation = PloutosValidationType.restore; break;
-                    case 3: validation = PloutosValidationType.automatic; break
-                    default: validation = PloutosValidationType.purchase; break;
+                    case 1:
+                        validation = .purchase
+                    case 2:
+                        validation = .restore
+                    case 3:
+                        validation = .automatic
+                    default:
+                        validation = .purchase
                 }
                 DeepWall.shared.validateReceipt(for: validation)
             } else {
