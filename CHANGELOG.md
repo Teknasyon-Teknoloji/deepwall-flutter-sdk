@@ -10,7 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - debugAdvertiseAttributions parameter error fixed
 
 ## Changed
-- On iOS deepwall-core version upgraded to version 2.1
+- On iOS deepwall-core version upgraded to version 2.1.0
+- On Android deepwall-core version upgraded to version 2.2.2
 
 ## Added
 - On iOS added `validateReceipt` implementation
