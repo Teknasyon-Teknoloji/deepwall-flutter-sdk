@@ -63,11 +63,11 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Deepwall example app'),
         ),
         body: Center(
-          child: RaisedButton(
+          child: ElevatedButton(
+            child: Text('Open Paywall'),
             onPressed: () {
               DeepwallFlutterPlugin.requestPaywall('AppLaunch', null);
             },
-            child: Text('Open Paywall'),
           ),
         ),
       ),
