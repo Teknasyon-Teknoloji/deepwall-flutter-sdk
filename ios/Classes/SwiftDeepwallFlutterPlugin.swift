@@ -74,9 +74,9 @@ public class SwiftDeepwallFlutterPlugin: NSObject, FlutterPlugin, DeepWallNotifi
                 let country = myArgs["country"] as! String
                 let language = myArgs["language"] as! String
                 let environmentStyle = myArgs["environmentStyle"] as! Int
-                let debugAdvertiseAttributions = myArgs["debugAdvertiseAttributions"]
+                let debugAdvertiseAttributions = myArgs["debugAdvertiseAttributions"] as? [String: String]
                 let theme: DeepWallEnvironmentStyle = (environmentStyle == 0) ? .light : .dark
-                let properties = DeepWallUserProperties(uuid: uuid, country: country, language: language, environmentStyle: theme, debugAdvertiseAttributions:debugAdvertiseAttributions as? [String])
+                let properties = DeepWallUserProperties(uuid: uuid, country: country, language: language, environmentStyle: theme, debugAdvertiseAttributions:debugAdvertiseAttributions)
                 DeepWall.shared.setUserProperties(properties)
             } else {
                 result(FlutterError(code: "-1", message: "iOS could not extract " +
@@ -90,7 +90,7 @@ public class SwiftDeepwallFlutterPlugin: NSObject, FlutterPlugin, DeepWallNotifi
             if let myArgs = args as? [String: Any]{
                 let actionKey = myArgs["actionKey"] as! String
                 if let extraData = myArgs["extraData"] as? Dictionary<String,Any> {
-                    
+
                     /*var bundle = Bundle()
                     if (extraData != nil) {
                         for key in extraData.keys {
@@ -113,7 +113,7 @@ public class SwiftDeepwallFlutterPlugin: NSObject, FlutterPlugin, DeepWallNotifi
                 else{
                     DeepWall.shared.requestPaywall(action: actionKey, in: SwiftDeepwallFlutterPlugin.viewController, extraData: [:])
                 }
-                
+
             } else {
                 result(FlutterError(code: "-1", message: "iOS could not extract " +
                     "flutter arguments in method: (requestPaywall)", details: nil))
@@ -128,9 +128,9 @@ public class SwiftDeepwallFlutterPlugin: NSObject, FlutterPlugin, DeepWallNotifi
                 let country = myArgs["country"] as! String
                 let language = myArgs["language"] as! String
                 let environmentStyle = myArgs["environmentStyle"] as! Int
-                let debugAdvertiseAttributions = myArgs["debugAdvertiseAttributions"]
+                let debugAdvertiseAttributions = myArgs["debugAdvertiseAttributions"] as? [String: String]
                 let theme: DeepWallEnvironmentStyle = (environmentStyle == 0) ? .light : .dark
-                DeepWall.shared.updateUserProperties(country:country, language:language, environmentStyle:theme,debugAdvertiseAttributions:debugAdvertiseAttributions as? [String])
+                DeepWall.shared.updateUserProperties(country:country, language:language, environmentStyle:theme,debugAdvertiseAttributions:debugAdvertiseAttributions)
             } else {
                 result(FlutterError(code: "-1", message: "iOS could not extract " +
                     "flutter arguments in method: (updateUserProperties)", details: nil))
@@ -148,15 +148,19 @@ public class SwiftDeepwallFlutterPlugin: NSObject, FlutterPlugin, DeepWallNotifi
                 return result("Could not recognize flutter arguments in method: (validateReceipt)")
             }
             if let myArgs = args as? [String: Any]{
-                /*var validationType = myArgs["validationType"] as! Int
-                var validation:DeepWallReceiptValidationType;
+                var validationType = myArgs["validationType"] as? Int
+                var validation: PloutosValidationType
                 switch (validationType) {
-                    case 1: validation = DeepWallReceiptValidationType.PURCHASE; break;
-                    case 2: validation = DeepWallReceiptValidationType.RESTORE; break;
-                    case 3: validation = DeepWallReceiptValidationType.AUTOMATIC; break
-                    default: validation = DeepWallReceiptValidationType.PURCHASE; break;
-                }*/
-                //DeepWall.shared.validateReceipt(type:validationType)
+                    case 1:
+                        validation = .purchase
+                    case 2:
+                        validation = .restore
+                    case 3:
+                        validation = .automatic
+                    default:
+                        validation = .purchase
+                }
+                DeepWall.shared.validateReceipt(for: validation)
             } else {
                 result(FlutterError(code: "-1", message: "iOS could not extract " +
                     "flutter arguments in method: (validateReceipt)", details: nil))
@@ -319,11 +323,11 @@ public class SwiftDeepwallFlutterPlugin: NSObject, FlutterPlugin, DeepWallNotifi
     //    }
     //    return map
     //}
-    
+
     private func convertJson(data: Data?) -> [String: Any]? {
         do {
             //let data = try JSONSerialization.data(withJSONObject: model, options: .prettyPrinted)
-            
+
             let jsonData = try JSONSerialization.jsonObject(with: data ?? Data(), options: []) as? [String: Any]
             return jsonData
         } catch {
@@ -331,7 +335,7 @@ public class SwiftDeepwallFlutterPlugin: NSObject, FlutterPlugin, DeepWallNotifi
             return nil
         }
     }
-    
+
     //private func convertJsonToArray(jsonArray: JSONArray) -> [Any]? {
     //    var array = [Any]()
     //    for i in 0...array.length() - 1 {

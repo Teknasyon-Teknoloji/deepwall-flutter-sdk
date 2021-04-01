@@ -11,7 +11,9 @@ dependencies:
     sdk: flutter
 
   deepwall_flutter_plugin:
-    path: ../
+    git:
+      url: https://github.com/Teknasyon-Teknoloji/deepwall-flutter-sdk.git
+      ref: 1.0.0
 
   cupertino_icons: ^1.0.0
 
