@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased](https://github.com/Teknasyon-Teknoloji/deepwall-flutter-sdk/compare/1.0.0...main)
 ## Fixed
 - Added missing parameters for `setUserProperties` method
+- debugAdvertiseAttributions parameter error fixed
 
 ## Changed
 - On iOS deepwall-core version upgraded to version 2.1
