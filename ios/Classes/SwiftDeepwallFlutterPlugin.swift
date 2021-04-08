@@ -121,6 +121,10 @@ public class SwiftDeepwallFlutterPlugin: NSObject, FlutterPlugin, DeepWallNotifi
 
         }
         else if (call.method == "requestAppTracking"){
+            guard #available(iOS 14.0, *) else {
+                return result("(requestAppTracking) method is only available in iOS 14 or newer")
+            }
+
             guard let args = call.arguments else {
                 return result("Could not recognize flutter arguments in method: (requestAppTracking)")
             }
@@ -164,7 +168,7 @@ public class SwiftDeepwallFlutterPlugin: NSObject, FlutterPlugin, DeepWallNotifi
             }
             if let myArgs = args as? [String: Any]{
                 if let extraData = myArgs["extraData"] as? Dictionary<String,Any> {
-                   DeepWall.shared.sendExtraDataToPaywall(extraData)
+                   DeepWall.shared.sendExtraData(toPaywall: extraData)
                 }
                 else{
                     return result("Could not recognize flutter arguments in method: (sendExtraDataToPaywall)")
