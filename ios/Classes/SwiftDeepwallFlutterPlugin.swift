@@ -120,6 +120,24 @@ public class SwiftDeepwallFlutterPlugin: NSObject, FlutterPlugin, DeepWallNotifi
             }
 
         }
+        else if (call.method == "requestAppTracking"){
+            guard let args = call.arguments else {
+                return result("Could not recognize flutter arguments in method: (requestAppTracking)")
+            }
+            if let myArgs = args as? [String: Any]{
+                let actionKey = myArgs["actionKey"] as! String
+                if let extraData = myArgs["extraData"] as? Dictionary<String,Any> {
+                    DeepWall.shared.requestAppTracking(action: actionKey, in: SwiftDeepwallFlutterPlugin.viewController, extraData: extraData)
+                }
+                else{
+                    DeepWall.shared.requestAppTracking(action: actionKey, in: SwiftDeepwallFlutterPlugin.viewController, extraData: [:])
+                }
+
+            } else {
+                result(FlutterError(code: "-1", message: "iOS could not extract " +
+                    "flutter arguments in method: (requestAppTracking)", details: nil))
+            }
+        }
         else if(call.method == "updateUserProperties"){
             guard let args = call.arguments else {
                 return result("Could not recognize flutter arguments in method: (updateUserProperties)")
@@ -140,8 +158,24 @@ public class SwiftDeepwallFlutterPlugin: NSObject, FlutterPlugin, DeepWallNotifi
         else if (call.method == "closePaywall"){
             DeepWall.shared.closePaywall()
         }
+         else if (call.method == "sendExtraDataToPaywall"){
+            guard let args = call.arguments else {
+                return result("Could not recognize flutter arguments in method: (sendExtraDataToPaywall)")
+            }
+            if let myArgs = args as? [String: Any]{
+                if let extraData = myArgs["extraData"] as? Dictionary<String,Any> {
+                   DeepWall.shared.sendExtraDataToPaywall(extraData: extraData)
+                }
+                else{
+                    return result("Could not recognize flutter arguments in method: (sendExtraDataToPaywall)")
+                }
+            } else {
+                result(FlutterError(code: "-1", message: "iOS could not extract " +
+                    "flutter arguments in method: (sendExtraDataToPaywall)", details: nil))
+            }
+        }
         else if(call.method == "hidePaywallLoadingIndicator"){
-
+            DeepWall.shared.hidePaywallLoadingIndicator()
         }
         else if(call.method == "validateReceipt"){
             guard let args = call.arguments else {
@@ -306,23 +340,12 @@ public class SwiftDeepwallFlutterPlugin: NSObject, FlutterPlugin, DeepWallNotifi
         self.eventStreamHandler.sendData(state: mapData)
     }
 
-    //private func convertJsonToMap(jsonObject: JSONObject) -> Dictionary<String,Any> {
-    //    var map = [String: Any]()
-    //
-    //    var keysItr = jsonObject.keys().iterator()
-    //    while (keysItr.hasNext()) {
-    //        var key = keysItr.next()
-    //        var value = jsonObject.get(key)
-    //
-    //        if (value is JSONArray) {
-    //            value = convertJsonToArray(value)
-    //        } else if (value is JSONObject) {
-    //            value = convertJsonToMap(value)
-    //        }
-    //        map.put(key, value)
-    //    }
-    //    return map
-    //}
+    public func deepWallATTStatusChanged() {
+        print("event:deepWallATTStatusChanged");
+        var mapData = [String: Any]()
+        mapData["event"] = "deepWallATTStatusChanged"
+        self.eventStreamHandler.sendData(state: mapData)
+    }
 
     private func convertJson(data: Data?) -> [String: Any]? {
         do {
@@ -335,19 +358,4 @@ public class SwiftDeepwallFlutterPlugin: NSObject, FlutterPlugin, DeepWallNotifi
             return nil
         }
     }
-
-    //private func convertJsonToArray(jsonArray: JSONArray) -> [Any]? {
-    //    var array = [Any]()
-    //    for i in 0...array.length() - 1 {
-    //        var value = array.get(i)
-    //        if (value is JSONArray) {
-    //            value = convertJsonToArray(value)
-    //        } else if (value is JSONObject) {
-    //            value = convertJsonToMap(value)
-    //        }
-    //        list.add(value)
-    //    }
-    //    return list
-    // }
-
 }

@@ -115,7 +115,7 @@ class DeepwallFlutterPlugin {
   }
 
   static void sendExtraDataToPaywall(extraData) async {
-    _channel.invokeMethod('requestAppTracking', {'extraData': extraData});
+    _channel.invokeMethod('sendExtraDataToPaywall', {'extraData': extraData});
   }
 
   static void updateUserProperties(country, language,
