@@ -117,6 +117,12 @@ class DeepwallFlutterPlugin(): FlutterPlugin, MethodCallHandler, ActivityAware {
       }
       DeepWall.showPaywall(this.activity, actionKey!!, bundle)
     }
+    else if (call.method == "requestAppTracking"){
+      //
+    }
+    else if (call.method == "sendExtraDataToPaywall"){
+      //
+    }
     else if(call.method == "updateUserProperties"){
       val country = call.argument<String>("country")
       val language = call.argument<String>("language")
