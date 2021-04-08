@@ -164,7 +164,7 @@ public class SwiftDeepwallFlutterPlugin: NSObject, FlutterPlugin, DeepWallNotifi
             }
             if let myArgs = args as? [String: Any]{
                 if let extraData = myArgs["extraData"] as? Dictionary<String,Any> {
-                   DeepWall.shared.sendExtraDataToPaywall(extraData: extraData)
+                   DeepWall.shared.sendExtraDataToPaywall(extraData)
                 }
                 else{
                     return result("Could not recognize flutter arguments in method: (sendExtraDataToPaywall)")
