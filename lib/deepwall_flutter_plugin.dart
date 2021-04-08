@@ -84,7 +84,8 @@ class DeepwallFlutterPlugin {
     });
   }
 
-  static void setUserProperties(uuid, country, language, {environmentStyle:0,debugAdvertiseAttributions:null}) async {
+  static void setUserProperties(uuid, country, language,
+      {environmentStyle: 0, debugAdvertiseAttributions: null}) async {
     if (uuid.isEmpty) {
       throw new DeepwallException(ErrorCode.USER_PROPERTIES_UUID_REQUIRED);
     }
@@ -106,6 +107,15 @@ class DeepwallFlutterPlugin {
   static void requestPaywall(actionKey, extraData) async {
     _channel.invokeMethod(
         'requestPaywall', {"actionKey": actionKey, 'extraData': extraData});
+  }
+
+  static void requestAppTracking(actionKey, extraData) async {
+    _channel.invokeMethod(
+        'requestAppTracking', {"actionKey": actionKey, 'extraData': extraData});
+  }
+
+  static void sendExtraDataToPaywall(extraData) async {
+    _channel.invokeMethod('requestAppTracking', {'extraData': extraData});
   }
 
   static void updateUserProperties(country, language,

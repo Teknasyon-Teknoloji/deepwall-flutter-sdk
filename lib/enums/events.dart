@@ -13,7 +13,8 @@ enum Event {
   PAYWALL_RESTORE_SUCCESS,
   PAYWALL_RESTORE_FAILED,
   PAYWALL_CONSUME_SUCCESS,
-  PAYWALL_CONSUME_FAILURE
+  PAYWALL_CONSUME_FAILURE,
+  ATT_STATUS_CHANGED
 }
 
 extension DeepwallEvent on Event {
@@ -31,8 +32,13 @@ extension DeepwallEvent on Event {
     Event.PAYWALL_PURCHASE_FAILED: 'deepWallPaywallPurchaseFailed',
     Event.PAYWALL_RESTORE_SUCCESS: 'deepWallPaywallRestoreSuccess',
     Event.PAYWALL_RESTORE_FAILED: 'deepWallPaywallRestoreFailed',
+
+    // android ONLY
     Event.PAYWALL_CONSUME_SUCCESS: 'deepWallPaywallConsumeSuccess',
     Event.PAYWALL_CONSUME_FAILURE: 'deepWallPaywallConsumeFailure',
+
+    // ios ONLY
+    Event.ATT_STATUS_CHANGED: 'deepWallATTStatusChanged',
   };
 
   String get value => values[this];

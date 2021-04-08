@@ -57,11 +57,20 @@ DeepwallFlutterPlugin.setUserProperties(​'UNIQUE_DEVICE_ID_HERE (UUID)'​,​
 
 - After setting userProperties, you are ready for requesting paywall with an action name. You can find action name in DeepWall dashboard.
 ```dart
-DeepwallFlutterPlugin.requestPaywall(​'AppLaunch'​, null​);
+DeepwallFlutterPlugin.requestPaywall(​'{ACTION_KEY}'​, null​);
 
 // or you can send extra parameters as:
 Map​<​String​, ​Object​> extraData = ​new​ HashMap(); userProperties[​'key'​] = ​'Value'​;
-DeepwallFlutterPlugin.requestPaywall(​'AppLaunch'​, extraData);
+DeepwallFlutterPlugin.requestPaywall(​'{ACTION_KEY}'​, extraData);
+```
+
+- Requesting ATT Prompts
+```dart
+DeepwallFlutterPlugin.requestAppTracking(​'{ACTION_KEY}'​, null​);
+
+// or you can send extra parameters as:
+Map​<​String​, ​Object​> extraData = ​new​ HashMap(); userProperties[​'key'​] = ​'Value'​;
+DeepwallFlutterPlugin.requestAppTracking(​'{ACTION_KEY}'​, extraData);
 ```
 
 - You can also close paywall.
