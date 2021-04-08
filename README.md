@@ -31,7 +31,7 @@ deepwall_flutter_plugin:
   - Run `$ cd ios && pod install`
 
 - **ANDROID**
-  - Set `minSdkVersion` to  21 in `android/build.gradle`
+  - Set `minSdkVersion` to  21 in `android/app/build.gradle`
   - Add `maven { url 'https://raw.githubusercontent.com/Teknasyon-Teknoloji/deepwall-android-sdk/master/' }` into `android/build.gradle` (Add into repositories under allprojects)
 
 
