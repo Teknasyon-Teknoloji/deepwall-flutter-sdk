@@ -1,7 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/Teknasyon-Teknoloji/deepwall-flutter-sdk/compare/1.1.0...main)
+## [Unreleased](https://github.com/Teknasyon-Teknoloji/deepwall-flutter-sdk/compare/1.2.0...main)
+
+
+---
+
+
+## [1.2.0 (2021-04-09)](https://github.com/Teknasyon-Teknoloji/deepwall-flutter-sdk/compare/1.1.0...1.2.0)
 ### Changed
 - On iOS `deepwall-core` version upgraded to version `~> 2.2`.
 
@@ -9,9 +15,6 @@ All notable changes to this project will be documented in this file.
 - On iOS added new "requestAppTracking" method.
 - On iOS added new "sendExtraDataToPaywall" method for sending extra data to paywalls.
 - Added new event for ios "DeepWallEvents.ATT_STATUS_CHANGED".
-
-
----
 
 ## [1.1.0 (2021-04-01)](https://github.com/Teknasyon-Teknoloji/deepwall-flutter-sdk/compare/1.0.0...1.1.0)
 ## Fixed
