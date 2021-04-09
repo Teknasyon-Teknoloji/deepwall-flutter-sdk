@@ -93,7 +93,13 @@ class DeepwallFlutterPlugin(): FlutterPlugin, MethodCallHandler, ActivityAware {
       val environmentStyle = call.argument<Int>("environmentStyle")
       val debugAdvertiseAttributions = call.argument<HashMap<String,Any>> ("debugAdvertiseAttributions")
       val theme: DeepWallEnvironmentStyle = if (environmentStyle == 0) DeepWallEnvironmentStyle.LIGHT else DeepWallEnvironmentStyle.DARK
-      DeepWall.setUserProperties(uuid!!, country!!, language!!, theme!!)
+      // DeepWall.setUserProperties(uuid!!, country!!, language!!, theme!!)
+      DeepWall.setUserProperties(
+        deviceId = uuid!!,
+        countryCode = country!!,
+        languageCode = language!!,
+        environmentStyle = theme!!
+      )
     }
     else if (call.method == "requestPaywall"){
       val actionKey = call.argument<String>("actionKey")
