@@ -1,7 +1,6 @@
 name: deepwall_flutter_plugin
 description: Deepwall Flutter plugin.
 version: 1.0.0
-author: Deepwall
 homepage: https://www.deepwall.com/
 
 environment:
@@ -11,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  event_bus: "1.1.0"
+  event_bus: ^1.1.0
 
 dev_dependencies:
   flutter_test:
