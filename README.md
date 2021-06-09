@@ -26,12 +26,13 @@ And run `$ flutter pub get`
 
 ### Installation Notes
 - **IOS**
-    - Set minimum ios version to 10.0 in `ios/Podfile` like: `platform :ios, '10.0'`
+    - Set minimum ios version 10.0 or higher in `ios/Podfile` like: `platform :ios, '10.0'`
     - Add `use_frameworks!` into `ios/Podfile` if not exists.
     - Run `$ cd ios && pod install`
 
 - **ANDROID**
-    - Set `minSdkVersion` to  21 in `android/app/build.gradle`
+    - Set kotlin_version "1.4.32" or higher in `android/build.gradle`
+    - Set `minSdkVersion` to 21 or higher in `android/app/build.gradle`
     - Add `maven { url 'https://raw.githubusercontent.com/Teknasyon-Teknoloji/deepwall-android-sdk/master/' }` into `android/build.gradle` (Add into repositories under allprojects)
 
 
@@ -63,7 +64,7 @@ import 'package:deepwall_flutter_plugin/deepwall_flutter_plugin.dart';
 DeepwallFlutterPlugin.requestPaywall('{ACTION_KEY}', null);
 
 // You can send extra parameter if needed as below
-Map<String, Object> extraData = new HashMap(); 
+Map<String, Object> extraData = new HashMap();
 extraData['sliderIndex'] = 2;
 extraData['title'] = 'Deepwall';
 DeepwallFlutterPlugin.requestPaywall('{ACTION_KEY}', extraData);
@@ -125,7 +126,7 @@ import 'package:deepwall_flutter_plugin/deepwall_flutter_plugin.dart';
 DeepwallFlutterPlugin.requestAppTracking('{ACTION_KEY}', null);
 
 // You can send extra parameter if needed as below
-Map<String, Object> extraData = new HashMap(); 
+Map<String, Object> extraData = new HashMap();
 extraData['appName'] = 'My awesome app';
 DeepwallFlutterPlugin.requestAppTracking('{ACTION_KEY}', extraData);
 ```
@@ -134,7 +135,7 @@ DeepwallFlutterPlugin.requestAppTracking('{ACTION_KEY}', extraData);
 ```dart
 import 'package:deepwall_flutter_plugin/deepwall_flutter_plugin.dart';
 
-Map<String, Object> extraData = new HashMap(); 
+Map<String, Object> extraData = new HashMap();
 extraData['appName'] = 'My awesome app';
 DeepwallFlutterPlugin.sendExtraDataToPaywall('{ACTION_KEY}', extraData);
 ```
