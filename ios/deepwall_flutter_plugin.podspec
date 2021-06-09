@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'deepwall_flutter_plugin'
-  s.version          = '1.2.0'
+  s.version          = '1.3.0'
   s.summary          = 'Deepwall Flutter plugin.'
   s.description      = <<-DESC
 Deepwall Flutter plugin.
