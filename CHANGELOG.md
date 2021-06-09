@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Added missing examples to [readme](README.md) file.
 
+### Changed
+- On iOS, `deepwall-core` version updated to `2.3.0`.
+- On Android, `deepwall-core` version updated to `2.3.0`.
+- On Android, kotlin version requirement is `1.4.32` or higher.
+
+
 ---
 
 
