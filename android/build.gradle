@@ -2,7 +2,7 @@ group 'com.deepwall.deepwall_flutter_plugin'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.3.50'
+    ext.kotlin_version = '1.4.32'
     repositories {
         google()
         jcenter()
@@ -32,7 +32,7 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
     }
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 21
     }
 }
 
@@ -43,6 +43,6 @@ repositories {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'deepwall:deepwall-core:2.2.2'
+    implementation 'deepwall:deepwall-core:2.3.0'
     implementation 'org.greenrobot:eventbus:3.2.0'
 }
