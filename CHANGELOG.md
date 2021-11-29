@@ -2,7 +2,9 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased](https://github.com/Teknasyon-Teknoloji/deepwall-flutter-sdk/compare/1.3.0...main)
-
+### Changed
+- On iOS, `deepwall-core` version updated to `2.4.0`.
+- On Android, `deepwall-core` version updated to `2.4.0`
 
 ---
 

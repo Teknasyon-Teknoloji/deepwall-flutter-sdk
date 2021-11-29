@@ -85,15 +85,12 @@ class DeepwallFlutterPlugin {
   }
 
   static void setUserProperties(uuid, country, language,
-      {
-      environmentStyle: 0,
+      {environmentStyle: 0,
       debugAdvertiseAttributions: null,
       phoneNumber: null,
       emailAddress: null,
       firstName: null,
-      lastName: null
-      }
-      ) async {
+      lastName: null}) async {
     if (uuid.isEmpty) {
       throw new DeepwallException(ErrorCode.USER_PROPERTIES_UUID_REQUIRED);
     }
@@ -131,15 +128,12 @@ class DeepwallFlutterPlugin {
   }
 
   static void updateUserProperties(country, language,
-      {
-        environmentStyle: 0,
-        debugAdvertiseAttributions: null,
-        phoneNumber: null,
-        emailAddress: null,
-        firstName: null,
-        lastName: null
-      }
-        ) async {
+      {environmentStyle: 0,
+      debugAdvertiseAttributions: null,
+      phoneNumber: null,
+      emailAddress: null,
+      firstName: null,
+      lastName: null}) async {
     await _channel.invokeMethod('updateUserProperties', {
       "country": country,
       'language': language,

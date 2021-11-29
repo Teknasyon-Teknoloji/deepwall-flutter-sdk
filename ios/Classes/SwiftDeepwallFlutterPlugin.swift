@@ -75,8 +75,28 @@ public class SwiftDeepwallFlutterPlugin: NSObject, FlutterPlugin, DeepWallNotifi
                 let language = myArgs["language"] as! String
                 let environmentStyle = myArgs["environmentStyle"] as! Int
                 let debugAdvertiseAttributions = myArgs["debugAdvertiseAttributions"] as? [String: String]
-                let theme: DeepWallEnvironmentStyle = (environmentStyle == 0) ? .light : .dark
-                let properties = DeepWallUserProperties(uuid: uuid, country: country, language: language, environmentStyle: theme, debugAdvertiseAttributions:debugAdvertiseAttributions)
+                let phoneNumber = myArgs["phoneNumber"] as? String
+                let emailAddress = myArgs["emailAddress"] as? String
+                let firstName = myArgs["firstName"] as? String
+                let lastName = myArgs["lastName"] as? String
+
+                let theme: DeepWallEnvironmentStyle
+                if environmentStyle == -7 {
+                    theme = .automatic
+                } else {
+                    theme = (environmentStyle == 0) ? .light : .dark
+                }
+                let properties = DeepWallUserProperties(
+                    uuid: uuid,
+                    country: country,
+                    language: language,
+                    environmentStyle: theme,
+                    phoneNumber: phoneNumber,
+                    debugAdvertiseAttributions:debugAdvertiseAttributions)
+                properties.emailAddress = emailAddress
+                properties.firstName = firstName
+                properties.lastName = lastName
+
                 DeepWall.shared.setUserProperties(properties)
             } else {
                 result(FlutterError(code: "-1", message: "iOS could not extract " +
@@ -151,8 +171,34 @@ public class SwiftDeepwallFlutterPlugin: NSObject, FlutterPlugin, DeepWallNotifi
                 let language = myArgs["language"] as! String
                 let environmentStyle = myArgs["environmentStyle"] as! Int
                 let debugAdvertiseAttributions = myArgs["debugAdvertiseAttributions"] as? [String: String]
-                let theme: DeepWallEnvironmentStyle = (environmentStyle == 0) ? .light : .dark
-                DeepWall.shared.updateUserProperties(country:country, language:language, environmentStyle:theme,debugAdvertiseAttributions:debugAdvertiseAttributions)
+                let theme: DeepWallEnvironmentStyle
+                if environmentStyle == -7 {
+                    theme = .automatic
+                } else {
+                    theme = (environmentStyle == 0) ? .light : .dark
+                }
+                let phoneNumber = myArgs["phoneNumber"] as? String
+                DeepWall.shared.updateUserProperties(
+                    country:country,
+                    language:language,
+                    environmentStyle:theme,
+                    phoneNumber:phoneNumber,
+                    debugAdvertiseAttributions:debugAdvertiseAttributions
+                )
+
+                var dpUserProperties = DeepWall.shared.userProperties()
+                if let emailAddress = myArgs["emailAddress"] as? String {
+                    dpUserProperties.emailAddress = emailAddress
+                }
+
+                if let firstName = myArgs["firstName"] as? String {
+                    dpUserProperties.firstName = firstName
+                }
+
+                if let lastName = myArgs["lastName"] as? String {
+                    dpUserProperties.lastName = lastName
+                }
+
             } else {
                 result(FlutterError(code: "-1", message: "iOS could not extract " +
                     "flutter arguments in method: (updateUserProperties)", details: nil))
