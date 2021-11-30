@@ -85,7 +85,12 @@ class DeepwallFlutterPlugin {
   }
 
   static void setUserProperties(uuid, country, language,
-      {environmentStyle: 0, debugAdvertiseAttributions: null}) async {
+      {environmentStyle: 0,
+      debugAdvertiseAttributions: null,
+      phoneNumber: null,
+      emailAddress: null,
+      firstName: null,
+      lastName: null}) async {
     if (uuid.isEmpty) {
       throw new DeepwallException(ErrorCode.USER_PROPERTIES_UUID_REQUIRED);
     }
@@ -100,7 +105,11 @@ class DeepwallFlutterPlugin {
       "country": country,
       'language': language,
       'environmentStyle': environmentStyle,
-      'debugAdvertiseAttributions': debugAdvertiseAttributions
+      'debugAdvertiseAttributions': debugAdvertiseAttributions,
+      'phoneNumber': phoneNumber,
+      'emailAddress': emailAddress,
+      'firstName': firstName,
+      'lastName': lastName
     });
   }
 
@@ -119,12 +128,21 @@ class DeepwallFlutterPlugin {
   }
 
   static void updateUserProperties(country, language,
-      {environmentStyle: 0, debugAdvertiseAttributions: null}) async {
+      {environmentStyle: 0,
+      debugAdvertiseAttributions: null,
+      phoneNumber: null,
+      emailAddress: null,
+      firstName: null,
+      lastName: null}) async {
     await _channel.invokeMethod('updateUserProperties', {
       "country": country,
       'language': language,
       'environmentStyle': environmentStyle,
-      'debugAdvertiseAttributions': debugAdvertiseAttributions
+      'debugAdvertiseAttributions': debugAdvertiseAttributions,
+      'phoneNumber': phoneNumber,
+      'emailAddress': emailAddress,
+      'firstName': firstName,
+      'lastName': lastName
     });
   }
 
