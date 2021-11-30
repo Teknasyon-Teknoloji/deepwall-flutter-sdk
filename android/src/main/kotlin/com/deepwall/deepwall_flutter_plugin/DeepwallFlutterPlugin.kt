@@ -91,13 +91,22 @@ class DeepwallFlutterPlugin(): FlutterPlugin, MethodCallHandler, ActivityAware {
       val country = call.argument<String>("country")
       val language = call.argument<String>("language")
       val environmentStyle = call.argument<Int>("environmentStyle")
-      val debugAdvertiseAttributions = call.argument<HashMap<String,Any>> ("debugAdvertiseAttributions")
+      // val debugAdvertiseAttributions = call.argument<HashMap<String,Any>> ("debugAdvertiseAttributions")
       val theme: DeepWallEnvironmentStyle = if (environmentStyle == 0) DeepWallEnvironmentStyle.LIGHT else DeepWallEnvironmentStyle.DARK
-      // DeepWall.setUserProperties(uuid!!, country!!, language!!, theme!!)
+
+      val phoneNumber = call.argument<String>("phoneNumber")
+      val emailAddress = call.argument<String>("emailAddress")
+      val firstName = call.argument<String>("firstName")
+      val lastName = call.argument<String>("lastName")
+
       DeepWall.setUserProperties(
         deviceId = uuid!!,
         countryCode = country!!,
         languageCode = language!!,
+        phoneNumber = phoneNumber ?: "",
+        email = emailAddress ?: "",
+        firstName = firstName ?: "",
+        lastName = lastName ?: "",
         environmentStyle = theme!!
       )
     }
@@ -133,9 +142,23 @@ class DeepwallFlutterPlugin(): FlutterPlugin, MethodCallHandler, ActivityAware {
       val country = call.argument<String>("country")
       val language = call.argument<String>("language")
       val environmentStyle = call.argument<Int>("environmentStyle")
-      val debugAdvertiseAttributions = call.argument<HashMap<String,Any>> ("debugAdvertiseAttributions")
+      // val debugAdvertiseAttributions = call.argument<HashMap<String,Any>> ("debugAdvertiseAttributions")
       val theme: DeepWallEnvironmentStyle = if (environmentStyle == 0) DeepWallEnvironmentStyle.LIGHT else DeepWallEnvironmentStyle.DARK
-      DeepWall.updateUserProperties(country!!, language!!, theme)
+
+      val phoneNumber = call.argument<String>("phoneNumber")
+      val emailAddress = call.argument<String>("emailAddress")
+      val firstName = call.argument<String>("firstName")
+      val lastName = call.argument<String>("lastName")
+
+      DeepWall.updateUserProperties(
+        countryCode = country!!,
+        languageCode = language!!,
+        phoneNumber = phoneNumber ?: "",
+        email = emailAddress ?: "",
+        firstName = firstName ?: "",
+        lastName = lastName ?: "",
+        environmentStyle = theme!!
+      )
     }
     else if (call.method == "closePaywall"){
       DeepWall.closePaywall()
