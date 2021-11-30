@@ -18,7 +18,7 @@ Add below code into your `pubspec.yaml` file under `dependencies` section.
 deepwall_flutter_plugin:
     git:
       url: https://github.com/Teknasyon-Teknoloji/deepwall-flutter-sdk.git
-      ref: 1.3.0
+      ref: 1.4.0
 ```
 
 And run `$ flutter pub get`
@@ -54,7 +54,7 @@ DeepwallFlutterPlugin.initialize('{API_KEY}', Environment.PRODUCTION.value);
 ```dart
 import 'package:deepwall_flutter_plugin/deepwall_flutter_plugin.dart';
 
-DeepwallFlutterPlugin.setUserProperties('UNIQUE_DEVICE_ID_HERE (UUID)','en-us','us');
+DeepwallFlutterPlugin.setUserProperties('UNIQUE_DEVICE_ID_HERE (UUID)', 'en-us', 'us');
 ```
 
 - After setting userProperties, you are ready for requesting paywall with an action key. You can find action key in DeepWall dashboard.
@@ -183,3 +183,7 @@ DeepwallFlutterPlugin.updateProductUpgradePolicy(
     - language
     - environmentStyle
     - debugAdvertiseAttributions
+    - phoneNumber
+    - emailAddress
+    - firstName
+    - lastName

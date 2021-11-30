@@ -39,7 +39,7 @@ class _MyAppState extends State<MyApp> {
       DeepwallFlutterPlugin.initialize('API_KEY', Environment.SANDBOX.value);
 
       DeepwallFlutterPlugin.setUserProperties(
-          'unique-device-id-here', 'en', 'us');
+          'unique-device-id-here-001', 'en', 'en-en');
 
       // Future.delayed(Duration(milliseconds: 5000), () {
       //   DeepwallFlutterPlugin.closePaywall();
@@ -49,9 +49,6 @@ class _MyAppState extends State<MyApp> {
       streamSubscriber.cancel();
     }
 
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
     if (!mounted) return;
   }
 
