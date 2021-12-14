@@ -15,7 +15,7 @@ Deepwall Flutter plugin.
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
-  s.dependency 'DeepWall', '2.4.0'
+  s.dependency 'DeepWall', '2.4.1'
   s.static_framework = true
   s.platform = :ios, '10.0'
 

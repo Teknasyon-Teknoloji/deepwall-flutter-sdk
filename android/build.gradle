@@ -43,6 +43,6 @@ repositories {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'deepwall:deepwall-core:2.4.0'
+    implementation 'deepwall:deepwall-core:2.4.1'
     implementation 'org.greenrobot:eventbus:3.2.0'
 }
