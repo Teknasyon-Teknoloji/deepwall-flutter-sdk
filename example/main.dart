@@ -1,8 +1,5 @@
 import 'dart:async';
-import 'dart:collection';
-
 import 'package:flutter/material.dart';
-
 import 'package:deepwall_flutter_plugin/deepwall_flutter_plugin.dart';
 import 'package:deepwall_flutter_plugin/enums/environments.dart';
 import 'package:deepwall_flutter_plugin/enums/events.dart';
@@ -26,7 +23,7 @@ class _MyAppState extends State<MyApp> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
-    StreamSubscription streamSubscriber;
+    late StreamSubscription streamSubscriber;
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       streamSubscriber = DeepwallFlutterPlugin.eventBus
@@ -39,7 +36,10 @@ class _MyAppState extends State<MyApp> {
       DeepwallFlutterPlugin.initialize('API_KEY', Environment.SANDBOX.value);
 
       DeepwallFlutterPlugin.setUserProperties(
-          'unique-device-id-here-001', 'en', 'en-en');
+        'unique-device-id-here-001',
+        'fr',
+        'en-en',
+      );
 
       // Future.delayed(Duration(milliseconds: 5000), () {
       //   DeepwallFlutterPlugin.closePaywall();
