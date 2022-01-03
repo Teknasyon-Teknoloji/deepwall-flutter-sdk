@@ -8,5 +8,5 @@ extension PurchaseUpgradePolicy on Policy {
     Policy.ENABLE_ONLY_DOWNGRADE: 3
   };
 
-  int get value => values[this];
+  int? get value => values[this];
 }

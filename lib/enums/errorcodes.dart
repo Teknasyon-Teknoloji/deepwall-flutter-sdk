@@ -8,12 +8,12 @@ enum ErrorCode {
 }
 
 class DeepwallException implements Exception {
-  int code;
-  String message;
+  int? code;
+  String? message;
 
   DeepwallException(ErrorCode code){
-    this.code = code.value['code'];
-    this.message = code.value['message'];
+    this.code = code.value!['code'];
+    this.message = code.value!['message'];
   }
 }
 
@@ -45,5 +45,5 @@ extension DeepwallError on ErrorCode {
     },
   };
 
-  Map get value => values[this];
+  Map? get value => values[this];
 }

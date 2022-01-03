@@ -7,5 +7,5 @@ extension DeepwallReceiptValidationType on ReceiptValidationType {
     ReceiptValidationType.AUTOMATIC: 3,
   };
 
-  int get value => values[this];
+  int? get value => values[this];
 }
