@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'deepwall_flutter_plugin'
-  s.version          = '1.4.0'
+  s.version          = '1.4.1'
   s.summary          = 'Deepwall Flutter plugin.'
   s.description      = <<-DESC
 Deepwall Flutter plugin.
@@ -15,7 +15,7 @@ Deepwall Flutter plugin.
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
-  s.dependency 'DeepWall', '2.4.0'
+  s.dependency 'DeepWall', '2.4.1'
   s.static_framework = true
   s.platform = :ios, '10.0'
 
