@@ -1,7 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/Teknasyon-Teknoloji/deepwall-flutter-sdk/compare/1.4.1...main)
+## [Unreleased](https://github.com/Teknasyon-Teknoloji/deepwall-flutter-sdk/compare/2.0.0...main)
+
+
+---
+
+
+## [2.0.0 (2022-01-05)](https://github.com/Teknasyon-Teknoloji/deepwall-flutter-sdk/compare/1.4.1...2.0.0)
 ### Added
 - Migrated to null safety
 
@@ -9,10 +15,6 @@ All notable changes to this project will be documented in this file.
 - Readme updated.
 - Due to null safety, minimum flutter version requirement is `2.12.0`.
 - Example file updated.
-
-
----
-
 
 ## [1.4.1 (2022-01-04)](https://github.com/Teknasyon-Teknoloji/deepwall-flutter-sdk/compare/1.4.0...1.4.1)
 ### Changed
