@@ -10,6 +10,13 @@
 ---
 
 
+## Version Guidance
+
+| Version | Status           |
+|---------|------------------|
+| 1.x     | Non null safety  |
+| 2.x     | Null safety      |
+
 ## Getting started
 
 Add below code into your `pubspec.yaml` file under `dependencies` section.
