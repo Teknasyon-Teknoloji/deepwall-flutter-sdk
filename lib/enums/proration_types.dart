@@ -10,5 +10,5 @@ extension ProrationModeType on ProrationMode {
     ProrationMode.UNKNOWN_SUBSCRIPTION_UPGRADE_DOWNGRADE_POLICY: 0
   };
 
-  int get value => values[this];
+  int? get value => values[this];
 }

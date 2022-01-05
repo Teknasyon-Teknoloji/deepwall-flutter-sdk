@@ -7,5 +7,5 @@ extension DeepwallEnvironmentStyle on EnvironmentStyle {
     EnvironmentStyle.DARK: 1,
   };
 
-  int get value => values[this];
+  int? get value => values[this];
 }

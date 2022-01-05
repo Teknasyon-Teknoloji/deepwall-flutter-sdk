@@ -41,5 +41,5 @@ extension DeepwallEvent on Event {
     Event.ATT_STATUS_CHANGED: 'deepWallATTStatusChanged',
   };
 
-  String get value => values[this];
+  String? get value => values[this];
 }

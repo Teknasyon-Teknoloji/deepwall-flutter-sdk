@@ -6,5 +6,5 @@ extension DeepwallEnvironment on Environment {
     Environment.PRODUCTION: 2,
   };
 
-  int get value => values[this];
+  int? get value => values[this];
 }
