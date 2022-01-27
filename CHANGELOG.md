@@ -1,10 +1,15 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/Teknasyon-Teknoloji/deepwall-flutter-sdk/compare/2.0.0...main)
+## [Unreleased](https://github.com/Teknasyon-Teknoloji/deepwall-flutter-sdk/compare/2.0.1...main)
 
 
 ---
+
+
+## [2.0.1 (2022-01-27)](https://github.com/Teknasyon-Teknoloji/deepwall-flutter-sdk/compare/2.0.0...2.0.1)
+### Fixed
+- Removed todo's from android native code. (onDetachedFromActivity)
 
 
 ## [2.0.0 (2022-01-05)](https://github.com/Teknasyon-Teknoloji/deepwall-flutter-sdk/compare/1.4.1...2.0.0)

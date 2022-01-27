@@ -25,7 +25,7 @@ Add below code into your `pubspec.yaml` file under `dependencies` section.
 deepwall_flutter_plugin:
     git:
       url: https://github.com/Teknasyon-Teknoloji/deepwall-flutter-sdk.git
-      ref: 2.0.0
+      ref: 2.0.1
 ```
 
 And run `$ flutter pub get`
