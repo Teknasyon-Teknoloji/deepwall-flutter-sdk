@@ -95,7 +95,7 @@ DeepwallFlutterPlugin.updateUserProperties('fr-fr','fr');
 ```dart
 import 'package:deepwall_flutter_plugin/deepwall_flutter_plugin.dart';
 
-DeepwallFlutterPlugin.validateReceipt('{API_KEY}', ReceiptValidationType.RESTORE.value);
+DeepwallFlutterPlugin.validateReceipt(ReceiptValidationType.RESTORE.value);
 ```
 
 
