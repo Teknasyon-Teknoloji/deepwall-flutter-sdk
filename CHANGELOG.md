@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased](https://github.com/Teknasyon-Teknoloji/deepwall-flutter-sdk/compare/2.0.1...main)
 ### Fixed
 - Fixed typo on readme file
+- Added missing import to readme
+
+### Changed
+- On Android, `deepwall-core` version upgraded to version `2.6.2`
+- On iOS, `deepwall-core` version upgraded to version `2.4.2`
+- Example `main.dart` file updated
+
+### Added
+- On android added orientation parameter to `requestPaywall` method
+
 
 ---
 

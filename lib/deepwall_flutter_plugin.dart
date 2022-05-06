@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:deepwall_flutter_plugin/enums/errorcodes.dart';
 import 'package:deepwall_flutter_plugin/enums/events.dart';
 import 'package:flutter/services.dart';
@@ -113,9 +111,12 @@ class DeepwallFlutterPlugin {
     });
   }
 
-  static void requestPaywall(actionKey, extraData) async {
-    _channel.invokeMethod(
-        'requestPaywall', {"actionKey": actionKey, 'extraData': extraData});
+  static void requestPaywall(actionKey, extraData, {orientation: 1}) async {
+    _channel.invokeMethod('requestPaywall', {
+      "actionKey": actionKey,
+      'extraData': extraData,
+      'orientation': orientation
+    });
   }
 
   static void requestAppTracking(actionKey, extraData) async {

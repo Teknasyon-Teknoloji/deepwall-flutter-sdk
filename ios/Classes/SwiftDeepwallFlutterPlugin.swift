@@ -110,24 +110,6 @@ public class SwiftDeepwallFlutterPlugin: NSObject, FlutterPlugin, DeepWallNotifi
             if let myArgs = args as? [String: Any]{
                 let actionKey = myArgs["actionKey"] as! String
                 if let extraData = myArgs["extraData"] as? Dictionary<String,Any> {
-
-                    /*var bundle = Bundle()
-                    if (extraData != nil) {
-                        for key in extraData.keys {
-                            if (extraData[key] is Bool) {
-                                bundle.putBoolean(key, extraData[key] as Bool)
-                            } else if (extraData[key] is Int) {
-                                bundle.putInt(key, extraData[key] as Int)
-                            } else if (extraData[key] is Double) {
-                                bundle.putDouble(key, extraData[key] as Double)
-                            } else if (extraData[key] is String) {
-                                bundle.putString(key, extraData[key] as String)
-                            }
-                            else{
-                                bundle.putString(key, extraData[key] as String)
-                            }
-                        }
-                    }*/
                     DeepWall.shared.requestPaywall(action: actionKey, in: SwiftDeepwallFlutterPlugin.viewController, extraData: extraData)
                 }
                 else{
