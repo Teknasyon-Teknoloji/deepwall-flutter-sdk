@@ -84,7 +84,12 @@ class DeepwallFlutterPlugin(): FlutterPlugin, MethodCallHandler, ActivityAware {
       val apiKey = call.argument<String>("apiKey")
       val environment = call.argument<Int>("environment")
       val deepWallEnvironment = if (environment == 1) DeepWallEnvironment.SANDBOX else DeepWallEnvironment.PRODUCTION
-      DeepWall.initDeepWallWith(activity.application, this.activity, apiKey!!, deepWallEnvironment)
+      DeepWall.initDeepWallWith(
+        Platform.GOOGLE,
+        this.activity,
+        apiKey!!,
+        deepWallEnvironment
+      )
     }
     else if(call.method == "setUserProperties"){
       val uuid = call.argument<String>("uuid")
@@ -113,6 +118,12 @@ class DeepwallFlutterPlugin(): FlutterPlugin, MethodCallHandler, ActivityAware {
     else if (call.method == "requestPaywall"){
       val actionKey = call.argument<String>("actionKey")
       var extraData = call.argument<HashMap<String,Any>>("extraData")
+
+      var orientation = call.argument<Int>("orientation")
+      if (orientation == null) {
+        orientation = 1
+      }
+      
       var bundle = Bundle()
       if (extraData != null) {
         for (key in extraData.keys) {
@@ -130,7 +141,14 @@ class DeepwallFlutterPlugin(): FlutterPlugin, MethodCallHandler, ActivityAware {
           }
         }
       }
-      DeepWall.showPaywall(this.activity, actionKey!!, bundle)
+
+      val deviceOrientation = if (orientation == 1) PaywallOrientation.PORTRAIT else PaywallOrientation.LANDSCAPE
+      DeepWall.showPaywall(
+        this.activity, 
+        actionKey!!, 
+        bundle,
+        orientation = deviceOrientation
+      )
     }
     else if (call.method == "requestAppTracking"){
       //

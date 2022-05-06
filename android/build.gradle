@@ -18,6 +18,7 @@ rootProject.allprojects {
     repositories {
         google()
         jcenter()
+        maven { url 'https://developer.huawei.com/repo/' }
         maven { url 'https://raw.githubusercontent.com/Teknasyon-Teknoloji/deepwall-android-sdk/master/' }
     }
 }
@@ -42,7 +43,9 @@ repositories {
 }
 
 dependencies {
+    implementation('deepwall:deepwall-core:2.6.2')
+    implementation('deepwall:deepwall-google:2.6.2')
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'deepwall:deepwall-core:2.4.1'
     implementation 'org.greenrobot:eventbus:3.2.0'
 }

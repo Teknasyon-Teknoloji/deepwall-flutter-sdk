@@ -40,7 +40,11 @@ And run `$ flutter pub get`
 - **ANDROID**
     - Set kotlin_version "1.4.32" or higher in `android/build.gradle`
     - Set `minSdkVersion` to 21 or higher in `android/app/build.gradle`
-    - Add `maven { url 'https://raw.githubusercontent.com/Teknasyon-Teknoloji/deepwall-android-sdk/master/' }` into `android/build.gradle` (Add into repositories under allprojects)
+    - Add code below into `android/build.gradle` (Add into repositories under allprojects)
+```
+  maven { url 'https://raw.githubusercontent.com/Teknasyon-Teknoloji/deepwall-android-sdk/master/' }
+  maven { url 'https://developer.huawei.com/repo/' }
+```
 
 
 ---
@@ -53,6 +57,7 @@ And run `$ flutter pub get`
 - On application start you need to initialize sdk with api key and environment.
 ```dart
 import 'package:deepwall_flutter_plugin/deepwall_flutter_plugin.dart';
+import 'package:deepwall_flutter_plugin/enums/environments.dart';
 
 DeepwallFlutterPlugin.initialize('{API_KEY}', Environment.PRODUCTION.value);
 ```
@@ -74,6 +79,7 @@ DeepwallFlutterPlugin.requestPaywall('{ACTION_KEY}', null);
 Map<String, Object> extraData = new HashMap();
 extraData['sliderIndex'] = 2;
 extraData['title'] = 'Deepwall';
+
 DeepwallFlutterPlugin.requestPaywall('{ACTION_KEY}', extraData);
 ```
 
@@ -94,6 +100,7 @@ DeepwallFlutterPlugin.updateUserProperties('fr-fr','fr');
 - You can validate receipts like below.
 ```dart
 import 'package:deepwall_flutter_plugin/deepwall_flutter_plugin.dart';
+import 'package:deepwall_flutter_plugin/enums/validate_receipt_types.dart';
 
 DeepwallFlutterPlugin.validateReceipt(ReceiptValidationType.RESTORE.value);
 ```
@@ -144,11 +151,20 @@ import 'package:deepwall_flutter_plugin/deepwall_flutter_plugin.dart';
 
 Map<String, Object> extraData = new HashMap();
 extraData['appName'] = 'My awesome app';
+
 DeepwallFlutterPlugin.sendExtraDataToPaywall('{ACTION_KEY}', extraData);
 ```
 
 
 ### Android Only Methods
+
+- You can set orientation when calling requestPaywall method.
+```dart
+import 'package:deepwall_flutter_plugin/deepwall_flutter_plugin.dart';
+import 'package:deepwall_flutter_plugin/enums/device_orientations.dart';
+
+DeepwallFlutterPlugin.requestPaywall('{ACTION_KEY}', null, orientation: DeviceOrientations.PORTRAIT.value);
+```
 
 - For consumable products, you need to mark the purchase as consumed for consumable product to be purchased again.
 ```dart

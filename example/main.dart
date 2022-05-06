@@ -3,13 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:deepwall_flutter_plugin/deepwall_flutter_plugin.dart';
 import 'package:deepwall_flutter_plugin/enums/environments.dart';
 import 'package:deepwall_flutter_plugin/enums/events.dart';
+import 'package:deepwall_flutter_plugin/enums/device_orientations.dart';
 // import 'package:deepwall_flutter_plugin/enums/environmentstyles.dart';
 
+const String apiKey = "XXXXX";
+const String paywallAction = "AppLaunch";
+const String deviceId = "unique-device-id-here-00001";
+
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -29,14 +36,16 @@ class _MyAppState extends State<MyApp> {
       streamSubscriber = DeepwallFlutterPlugin.eventBus
           .on<DeepwallFlutterEvent>()
           .listen((event) {
+        // ignore: avoid_print
         print(event.event.value);
+        // ignore: avoid_print
         print(event.data);
       });
 
-      DeepwallFlutterPlugin.initialize('API_KEY', Environment.SANDBOX.value);
+      DeepwallFlutterPlugin.initialize(apiKey, Environment.SANDBOX.value);
 
       DeepwallFlutterPlugin.setUserProperties(
-        'unique-device-id-here-001',
+        deviceId,
         'fr',
         'en-en',
       );
@@ -45,6 +54,7 @@ class _MyAppState extends State<MyApp> {
       //   DeepwallFlutterPlugin.closePaywall();
       // });
     } on Exception {
+      // ignore: avoid_print
       print('Failed to connect deepwall.');
       streamSubscriber.cancel();
     }
@@ -61,9 +71,14 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Center(
           child: ElevatedButton(
-            child: Text('Open Paywall'),
+            child: const Text('Open Paywall'),
             onPressed: () {
-              DeepwallFlutterPlugin.requestPaywall('AppLaunch', null);
+              DeepwallFlutterPlugin.requestPaywall(paywallAction, null);
+
+              /*
+              DeepwallFlutterPlugin.requestPaywall(paywallAction, null,
+                  orientation: DeviceOrientations.PORTRAIT.value);
+              */
             },
           ),
         ),
