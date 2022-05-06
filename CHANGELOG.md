@@ -1,7 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/Teknasyon-Teknoloji/deepwall-flutter-sdk/compare/2.0.1...main)
+## [Unreleased](https://github.com/Teknasyon-Teknoloji/deepwall-flutter-sdk/compare/3.0.0...main)
+
+
+---
+
+
+## [3.0.0 (2022-05-06)](https://github.com/Teknasyon-Teknoloji/deepwall-flutter-sdk/compare/2.0.1...3.0.0)
 ### Fixed
 - Fixed typo on readme file
 - Added missing import to readme
@@ -13,9 +19,6 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 - On android added orientation parameter to `requestPaywall` method
-
-
----
 
 
 ## [2.0.1 (2022-01-27)](https://github.com/Teknasyon-Teknoloji/deepwall-flutter-sdk/compare/2.0.0...2.0.1)
