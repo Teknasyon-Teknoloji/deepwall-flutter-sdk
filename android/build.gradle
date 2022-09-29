@@ -43,8 +43,8 @@ repositories {
 }
 
 dependencies {
-    implementation('deepwall:deepwall-core:2.6.2')
-    implementation('deepwall:deepwall-google:2.6.2')
+    implementation('deepwall:deepwall-core:2.6.6')
+    implementation('deepwall:deepwall-google:2.6.6')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'org.greenrobot:eventbus:3.2.0'
