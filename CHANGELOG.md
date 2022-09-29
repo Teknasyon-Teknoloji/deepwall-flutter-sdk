@@ -1,11 +1,16 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/Teknasyon-Teknoloji/deepwall-flutter-sdk/compare/3.0.0...main)
-- On Android, `deepwall-core` sdk version upgraded to version `2.6.6`
+## [Unreleased](https://github.com/Teknasyon-Teknoloji/deepwall-flutter-sdk/compare/3.0.1...main)
 
 
 ---
+
+
+## [3.0.1 (2022-09-29)](https://github.com/Teknasyon-Teknoloji/deepwall-flutter-sdk/compare/3.0.0...3.0.1)
+### Changed
+- On Android, `deepwall-core` sdk version upgraded to version `2.6.6`.
+- Update sdk dependencies (`pubspec.lock`).
 
 
 ## [3.0.0 (2022-05-06)](https://github.com/Teknasyon-Teknoloji/deepwall-flutter-sdk/compare/2.0.1...3.0.0)
